@@ -1,0 +1,25 @@
+version: '3'
+services:
+  docss-api:
+    container_name: "docss_api"
+    #image: zephinzer/godev:latest
+    build: "./devops"
+    volumes:
+      - "./docss-api:/go/src/app"
+      #- "./docss-api/.cache/pkg:/go/pkg"
+    working_dir: "/go/src/app"
+    ports:
+      - "3000:3000"
+
+  mysql_docss-api:
+      image: mysql:5.7
+      container_name: mysql_docss_api
+      volumes:
+        - ./infra/mysql:/var/lib/mysql
+      environment:
+        - MYSQL_ROOT_PASSWORD=123123123
+        - MYSQL_DATABASE=mysql_docss_api
+        - MYSQL_USER=user
+        - MYSQL_PASSWORD=123123123
+      ports:
+        - "33060:3306"
