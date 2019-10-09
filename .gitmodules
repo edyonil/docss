@@ -1,0 +1,3 @@
+[submodule "docss-api"]
+	path = docss-api
+	url = https://github.com/edyonil/docss-api
